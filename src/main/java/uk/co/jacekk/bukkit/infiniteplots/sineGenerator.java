@@ -21,9 +21,14 @@ public class sineGenerator extends ChunkGenerator {
 		for(int x = 0; x < 16; x++){
 			for(int z = 0; z < 16; z++){
 				setBlock(result, x, 0, z, Material.BEDROCK.getId());
+				int y = 1;
+				for(y = 1; y < (Math.sin((chunkX * 16 + x)*(Math.PI / 64)) * 12 + 12); y++ ){
+					setBlock(result, x, y, z, Material.DIRT.getId());
+				}
+				setBlock(result, x, y, z, Material.GRASS.getId());
 			}
 		}
-		return null;
+		return result;
 		
 	}
 }
